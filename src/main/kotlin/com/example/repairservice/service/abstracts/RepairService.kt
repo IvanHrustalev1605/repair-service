@@ -1,7 +1,7 @@
 package com.example.repairservice.service.abstracts
 
-import com.example.repairservice.entity.RepairPart
+import com.example.repairservice.dto.RepairPartDto
 
 interface RepairService {
-    fun repairCar(carId: Long, partIds: List<RepairPart>) : Boolean
+    fun repairCar(carId: Long, partIds: List<RepairPartDto>) : Boolean
 }

@@ -1,7 +1,7 @@
 package com.example.repairservice.repository;
 
-import com.example.repairservice.entity.RepairProcess
+import com.example.repairservice.dto.RepairProcessDto
 import org.springframework.data.jpa.repository.JpaRepository
 
-interface RepairProcessRepository : JpaRepository<RepairProcess, Long> {
+interface RepairProcessRepository : JpaRepository<RepairProcessDto, Long> {
 }

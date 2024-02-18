@@ -1,11 +1,11 @@
 package com.example.repairservice.service.abstracts
 
-import com.example.repairservice.entity.RepairPart
+import com.example.repairservice.dto.RepairPartDto
 
 interface RepairPartsService {
     fun saveNotInstalledParts()
-    fun getAllNotInstalledPartsFromStorage() : List<RepairPart>
-    fun getAllRepairPartsByIds(ids: List<Long>) : MutableSet<RepairPart>
-    fun setInstalledStatusToParts(partList: List<RepairPart>) : Boolean
+    fun getAllNotInstalledPartsFromStorage() : List<RepairPartDto>
+    fun getAllRepairPartsByIds(ids: List<Long>) : MutableSet<RepairPartDto>
+    fun setInstalledStatusToParts(partList: List<RepairPartDto>) : Boolean
 
 }
