@@ -2,6 +2,7 @@ package com.example.repairservice.service.impl
 
 import com.example.repairservice.clients.StorageFeignClient
 import com.example.repairservice.dto.CarDto
+import com.example.repairservice.exceptions.SomethingGoWrongException
 import com.example.repairservice.service.abstracts.CarService
 import com.example.repairservice.service.abstracts.RepairPartsService
 import jakarta.transaction.Transactional
@@ -32,5 +33,14 @@ class CarServiceImpl(private val storageFeignClient: StorageFeignClient,
         return storageFeignClient.getCarById(id)
     }
 
-
+    override fun setCarToDriver(carId: Long, driverId: Long): Boolean {
+        val car = storageFeignClient.getCarById(carId)
+        if (car.drivers?.size == 0) {
+            car.drivers = mutableListOf(storageFeignClient.getDriverById(driverId))
+            storageFeignClient.saveCar(car)
+            return true
+        } else {
+            throw SomethingGoWrongException("На машине с номер " + car.number + " уже есть водитель!")
+        }
+    }
 }

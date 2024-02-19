@@ -1,6 +1,7 @@
 package com.example.repairservice.clients
 
 import com.example.repairservice.dto.CarDto
+import com.example.repairservice.dto.DriverDto
 import com.example.repairservice.dto.RepairPartDto
 import feign.Headers
 import jakarta.mail.Header
@@ -21,10 +22,15 @@ interface StorageFeignClient {
     @PostMapping("/save-part")
     fun savePart(@RequestBody(required = true) repairPartDto: RepairPartDto) : Boolean
 
-    @GetMapping("/cars/car-by-id", headers = ["multipart/form-data"])
+    @GetMapping("/cars/car-by-id")
     fun getCarById(@RequestParam("id") id: Long) : CarDto
-    @GetMapping("/car-by-vin")
+    @GetMapping("/cars/car-by-vin")
     fun getCarByVin(@RequestParam("vin") vin: String) : CarDto
-    @PostMapping("/saveCar")
+    @PostMapping("/cars/save")
     fun saveCar(@RequestBody carDto: CarDto) : Boolean
+
+    @GetMapping("/drivers/driver-by-id")
+    fun getDriverById(@RequestParam("id") id : Long) : DriverDto
+    @PostMapping("/drivers/save")
+    fun saveDriver(@RequestBody driverDto: DriverDto) : Boolean
 }

@@ -11,7 +11,7 @@ import java.time.LocalDateTime
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class RepairPartDto(
-    @JsonProperty(value = "id", required = true)
+    @JsonProperty(value = "id", required = false)
     var id: Long? = null,
     @JsonProperty(value = "code", required = false)
     var code: String? = null,
@@ -21,7 +21,7 @@ data class RepairPartDto(
     var installationTime: LocalDateTime? = null,
     @JsonProperty(value = "installed", required = false)
     var installed: Boolean = false,
-    @JsonProperty(value = "id", required = false)
+    @JsonProperty(value = "repairPartGroup", required = false)
     var repairPartGroup: Int? = null
 ) : Serializable {
     override fun equals(other: Any?): Boolean {

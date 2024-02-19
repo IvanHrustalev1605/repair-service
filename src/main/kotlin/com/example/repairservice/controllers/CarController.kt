@@ -21,4 +21,9 @@ class CarController(private val carService: CarService) {
     fun getCar(@RequestParam("id") id: Long) : ResponseEntity<CarDto> {
         return ResponseEntity(carService.getCarById(id), HttpStatus.OK)
     }
+    @GetMapping("/setCarToDriver")
+    fun setCarToDriver(@RequestParam("carId") carId: Long,
+                       @RequestParam("driverId") driverId: Long) : ResponseEntity<Boolean> {
+        return ResponseEntity(carService.setCarToDriver(carId, driverId), HttpStatus.OK)
+    }
 }

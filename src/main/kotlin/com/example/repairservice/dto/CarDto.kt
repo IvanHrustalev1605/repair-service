@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import java.io.Serializable
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-class CarDto(
+open class CarDto(
     @JsonProperty(required = false, value = "id")
     open var id: Long,
     @JsonProperty(required = false, value = "vinNumber")
@@ -13,7 +13,9 @@ class CarDto(
     @JsonProperty(required = false, value = "number")
     open var number: String,
     @JsonProperty(required = false, value = "repairParts")
-    open var repairParts: List<RepairPartDto>) : Serializable{
+    open var repairParts: List<RepairPartDto>,
+    @JsonProperty(required = false, value = "drivers")
+    open var drivers: MutableList<DriverDto>? = null) : Serializable{
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
